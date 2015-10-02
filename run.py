@@ -33,7 +33,7 @@ def hello_monkey():
 @app.route("/handle-key", methods=["GET", "POST"])
 def handle_key():
 
-	digit_pressed = request.values.get('Digit', None)
+	digit_pressed = request.values.get('Digits', None)
 	if digit_pressed == '1':
 		resp = twilio.twiml.Response()
 
