@@ -12,11 +12,17 @@ callers = {
 def hello_monkey():
 
 	from_number = request.values.get('From', None)
-	resp = twilio.twiml.Response()
+
 	if from_number in callers:
-		resp.say("Hello " + callers[from_number])
+		caller = callers[from_number]
 	else:
-		resp.say("Hello Monkey")
+		caller = "Monkey"
+
+	resp = twilio.twiml.Response()
+
+	resp.say("Hello " + caller)
+
+	resp.play("http://demo.twilio.com/hellomonkey/monkey.mp3")
 
 	return str(resp)
 
