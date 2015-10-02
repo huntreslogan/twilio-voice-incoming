@@ -4,9 +4,11 @@ import twilio.twiml
 
 app = Flask(__name__)
 
+#Add your number to the list to try it out!
 callers = {
-	"+14158664966" : "Jessica",
-	"+17073383931" : "Donna"
+	"+14158675309" : "Curious George",
+	"+14158675310" : "Boots",
+	"+14158675311" : "Virgil",
 }
 
 @app.route('/', methods=['GET', 'POST'])
@@ -39,12 +41,12 @@ def handle_key():
 
 		resp.dial('+13105551212')
 
-		resp.say('The call failed or the remote party hung up. Goodbye.')
+		resp.say('The call failed or the remote party hung up. Thanks for calling. Goodbye.')
 
 		return str(resp)
 	elif digit_pressed == "2":
 		resp = twilio.twiml.Response()
-		resp.say("Record your monkey howl after the tone.")
+		resp.say("Record your monkey howl after the tone. Get crazy.")
 		resp.record(maxLength="30", action="/handle-recording")
 		return str(resp)
 	else:
